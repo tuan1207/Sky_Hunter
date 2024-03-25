@@ -159,14 +159,18 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 7){
+            if(this.posX > 700){
+                this.node.destroy();
+            }
             this.posX = this.node.position.x;
             this.posY = this.node.position.y;
 
             
             if(this.posY > 200){
                 this.posY -= this.bulletSpeed * 0.75;
-            }else{return;}
-            this.scheduleOnce(()=>{this.node.destroy()}, 5);
+            }else{
+                this.posX += this.bulletSpeed;
+            }
             let posBullet = new Vec3(this.posX, this.posY);
             this.node.setPosition(posBullet);
         }
