@@ -27,9 +27,12 @@ export class Background extends Component {
     }
 
     startUp(){
+        const scene = director.getScene();
+        const canvas = scene.getComponentInChildren(Canvas);
         this.bgHeight1 = this.BG1.getComponent(UITransform).height;
         this.bgHeight2 = this.BG2.getComponent(UITransform).height;
         this.bgHeight3 = this.BG3.getComponent(UITransform).height;
+        console.log(canvas.getComponent(UITransform).height);
 
         this.tempStartLocation1.y = -500;
         this.tempStartLocation2.y = this.bgHeight1 - 500;
@@ -52,10 +55,10 @@ export class Background extends Component {
         const scene = director.getScene();
         const canvas = scene.getComponentInChildren(Canvas);
         if(this.tempStartLocation1.y <= (0 - this.bgHeight1)){
-            this.tempStartLocation1.y = canvas.getComponent(UITransform).height;
+            this.tempStartLocation1.y = 1360;
         }
         if(this.tempStartLocation2.y <= (0 - this.bgHeight2)){
-            this.tempStartLocation2.y = canvas.getComponent(UITransform).height;
+            this.tempStartLocation2.y = 1360;
         }
         if(this.tempStartLocation3.y <= (0 - this.bgHeight3)){
             this.tempStartLocation3.y = canvas.getComponent(UITransform).height;

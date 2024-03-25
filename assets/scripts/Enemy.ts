@@ -66,7 +66,7 @@ export class Enemy extends Component {
     enemyMove(){
         if(!ButtonPlayScene.instance.moveEnable) return;
         if(GameCtrl.instance.countElement === 1){
-            if(this.posY < -320){
+            if(this.posY < -400){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -77,7 +77,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 2){
-            if(this.posY < -320){
+            if(this.posY < -400){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -89,7 +89,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 3){
-            if(this.posX > 640){
+            if(this.posX > 700){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -104,7 +104,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 4){
-            if(this.posX > 640){
+            if(this.posX > 700){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -115,7 +115,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 5){
-            if(this.posX < -640){
+            if(this.posX < -700){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -130,13 +130,13 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 6){
-            if(this.posY < -320){
+            if(this.posY < -400){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
             this.posY = this.node.position.y;
 
-            if(this.posX < -360){
+            if(this.posX < -400){
                 this.posX += this.bulletSpeed * 0.75;
             }else{
                 this.posX += this.bulletSpeed * 0.75;
@@ -158,7 +158,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 8){
-            if(this.posX < -640){
+            if(this.posX < -700){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -169,7 +169,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 9){
-            if(this.posY < -320){
+            if(this.posY < -400){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;
@@ -185,7 +185,7 @@ export class Enemy extends Component {
             this.node.setPosition(posBullet);
         }
         if(GameCtrl.instance.countElement === 10){
-            if(this.posY < -320){
+            if(this.posY < -400){
                 this.node.destroy();
             }
             this.posX = this.node.position.x;

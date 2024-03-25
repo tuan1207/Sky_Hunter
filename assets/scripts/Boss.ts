@@ -54,7 +54,7 @@ export class Boss extends Component {
     }
     randomPos(){
         this.randomX = math.random() * (0 - 1000) + 500;
-        this.randomY = math.random() * (200 - 600) + 400;
+        this.randomY = math.random() * (200 - 600) + 300;
         this.randomPosition = new Vec3(this.randomX, this.randomY);        
     }
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null){
