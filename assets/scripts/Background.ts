@@ -41,9 +41,6 @@ export class Background extends Component {
     }
 
     update(deltaTime: number) {
-        if (!Plane.instance.moveEnable) {
-            return;
-        }
         this.tempStartLocation1 = this.BG1.position;
         this.tempStartLocation2 = this.BG2.position;
         this.tempStartLocation3 = this.BG3.position;
