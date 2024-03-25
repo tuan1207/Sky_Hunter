@@ -1,4 +1,4 @@
-import { _decorator, Component, tween, Vec3, Node, Prefab, instantiate, Collider2D, Contact2DType, IPhysics2DContact } from 'cc';
+import { _decorator, Component, tween, Vec3, Node, Prefab, instantiate, Collider2D, Contact2DType, IPhysics2DContact, math, Vec2, RigidBody2D, macro, UITransform } from 'cc';
 import { GameCtrl } from './GameCtrl';
 import { Plane } from './Plane';
 import { AudioToggle } from './AudioToggle';
@@ -10,6 +10,8 @@ export class Enemy extends Component {
     static instance: Enemy;
     @property(Prefab)
     public destroyPre: Prefab = null;
+    @property(Prefab)
+    public bulletPre: Prefab = null;
 
     public bulletSpeed: number = 5;
     private posX: number;
@@ -18,6 +20,7 @@ export class Enemy extends Component {
     private contE3 = [];
     protected onLoad(): void {
         Enemy.instance = this;
+        this.schedule(this.spawnBultet, 2.5, macro.REPEAT_FOREVER, 0);
     }
     start() {
         let collider = this.getComponent(Collider2D);
@@ -30,6 +33,16 @@ export class Enemy extends Component {
 
     update(deltaTime: number) {
         this.enemyMove();
+    }
+    spawnBultet(){
+        let bullet = this.bulletPre;
+        let prefabInstance = instantiate(bullet);
+        prefabInstance.parent = Plane.instance.bullet;
+        prefabInstance.setWorldPosition(this.node.worldPosition);
+
+        let direction = this.node.position.subtract(Plane.instance.node.position).normalize();
+        let bulletVelo = new Vec2(-direction.x * 10, -direction.y * 10);
+        prefabInstance.getComponent(RigidBody2D).linearVelocity = bulletVelo;
     }
     destroyB(){
         let destroyPrefab = this.destroyPre;

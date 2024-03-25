@@ -39,12 +39,45 @@ export class JoyStick extends Component {
             let distance = math.Vec3.distance(this.VecY, this.stickPos);
             let posX = this.plane.position.x + direction.x * distance * 0.05;
             let posY = this.plane.position.y + direction.y * distance * 0.05;
-            if (posX > -630 && posX < 630 && posY > -330 && posY < 330){
+
+            if (posX <= -620){
+                this.plane.setPosition(new Vec3(-620, posY));
+                if(posY <= -300){
+                    this.plane.setPosition(new Vec3(-620, -300));
+                }
+                if(posY >= 300){
+                    this.plane.setPosition(new Vec3(-620, 300));
+                }
+            }else if(posX >= 620){
+                this.plane.setPosition(new Vec3(620, posY));
+                if(posY <= -300){
+                    this.plane.setPosition(new Vec3(620, -300));
+                }
+                if(posY >= 300){
+                    this.plane.setPosition(new Vec3(620, 300));
+                }
+            }else if(posY <= -300){
+                this.plane.setPosition(new Vec3(posX, -300));
+                if(posX <= -620){
+                    this.plane.setPosition(new Vec3(-620, -300));
+                }
+                if(posX >= 620){
+                    this.plane.setPosition(new Vec3(620, -300));
+                }
+            }else if(posY >= 300){
+                this.plane.setPosition(new Vec3(posX, 300));
+                if(posX <= -620){
+                    this.plane.setPosition(new Vec3(-620, 300));
+                }
+                if(posX >= 620){
+                    this.plane.setPosition(new Vec3(620, 300));
+                }
+            }
+            else{
                 this.plane.setPosition(new Vec3(posX, posY));
             }
         }
     }
-
     protected onLoad(): void {
         JoyStick.instance = this;
     }

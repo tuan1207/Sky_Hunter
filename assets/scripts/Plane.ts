@@ -2,6 +2,7 @@ import { _decorator, Component, instantiate, Node, input, Input, EventKeyboard, 
 import { GameCtrl } from './GameCtrl';
 import { AudioToggle } from './AudioToggle';
 import { ButtonPlayScene } from './ButtonPlayScene';
+import { Enemy } from './Enemy';
 const { ccclass, property } = _decorator;
 
 @ccclass('Plane')
@@ -14,6 +15,8 @@ export class Plane extends Component {
     public planeAnim: Animation = null;
     @property(Prefab)
     public listBullet: Prefab [] = [];
+    @property(Prefab)
+    public planeDes: Prefab = null;
     @property(Node)
     public listHealth: Node [] = [];
     @property(Node)
@@ -105,28 +108,28 @@ export class Plane extends Component {
         let posY = this.Plane.position.y;
 
         if(this.moveLeft){
-            if(posX > -575){
+            if(posX > -620){
                 posX -= this.moveSpeed * dt;
             }
             let posPlane = new Vec3(posX, posY);
             this.Plane.setPosition(posPlane);
         }
         if(this.moveRight){
-            if(posX < 575){
+            if(posX < 620){
                 posX += this.moveSpeed * dt;
             }
             let posPlane = new Vec3(posX, posY);
             this.Plane.setPosition(posPlane);
         }
         if(this.moveUp){
-            if(posY < 340){
+            if(posY < 300){
                 posY += this.moveSpeed * dt;
             }
             let posPlane = new Vec3(posX, posY);
             this.Plane.setPosition(posPlane); 
         }
         if(this.moveDown){
-            if(posY > -340){
+            if(posY > -300){
                 posY -= this.moveSpeed * dt;
             }
             let posPlane = new Vec3(posX, posY);
@@ -153,7 +156,7 @@ export class Plane extends Component {
             this.scheduleOnce(() => {this.listItemR = []});
             this.scheduleOnce(() => {this.listItemB = []});
             this.scheduleOnce(() => {other.destroy()});
-            this.planeAnim.play();
+            this.planeAnim.play('Plane');
             selfCollider.group = 32;
             setTimeout(() => {
             selfCollider.group = 1;}, 4000);  
@@ -163,7 +166,7 @@ export class Plane extends Component {
         if(other.name.startsWith('Laser')){
             this.scheduleOnce(() => {this.listItemR = []});
             this.scheduleOnce(() => {this.listItemB = []});
-            this.planeAnim.play();
+            this.planeAnim.play('Plane');
             selfCollider.group = 32;
             setTimeout(() => {
                 selfCollider.group = 1;}, 4000);   
@@ -237,9 +240,20 @@ export class Plane extends Component {
             ButtonPlayScene.instance.moveEnable = false;        
             ButtonPlayScene.instance.spawnEnabled = false;
             GameCtrl.instance.overNode.setWorldPosition(GameCtrl.instance.node.worldPosition);
-            GameCtrl.instance.overNode.active = true;
+            this.planeAnim.play('PlaneDes');
             GameCtrl.instance.savePoint();
+            setTimeout(() => {
+                GameCtrl.instance.node.active = false;
+                this.node.active = false;
+                GameCtrl.instance.overNode.active = true;
+            }, 1500);
         }
+    }
+    planeDestroy(){
+        let destroyPre = this.planeDes;
+        let prefabInstance = instantiate(destroyPre);
+        prefabInstance.parent = this.node;
+        prefabInstance.setWorldPosition(this.node.worldPosition);
     }
     
 }

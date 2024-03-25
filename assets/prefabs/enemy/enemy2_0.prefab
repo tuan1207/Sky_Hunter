@@ -302,6 +302,10 @@
       "__uuid__": "83b6034c-9219-4985-8b07-d535b1a2352d",
       "__expectedType__": "cc.Prefab"
     },
+    "bulletPre": {
+      "__uuid__": "cb967760-0a9c-4c38-bd95-2e6c4daf996b",
+      "__expectedType__": "cc.Prefab"
+    },
     "_id": ""
   },
   {
