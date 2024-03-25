@@ -1,0 +1,48 @@
+{
+  "__version__": "1.0.5",
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "BULLET"
+      },
+      {
+        "index": 2,
+        "name": "ENEMY"
+      },
+      {
+        "index": 3,
+        "name": "ENEMYB"
+      },
+      {
+        "index": 4,
+        "name": "HELICOPTER"
+      },
+      {
+        "index": 5,
+        "name": "ITEM"
+      },
+      {
+        "index": 6,
+        "name": "CONTACT"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 45,
+      "1": 20,
+      "2": 3,
+      "3": 1,
+      "4": 2,
+      "5": 97,
+      "6": 32
+    }
+  },
+  "general": {
+    "designResolution": {
+      "width": 1280,
+      "height": 720,
+      "fitHeight": true
+    }
+  },
+  "layer": []
+}
