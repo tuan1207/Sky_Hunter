@@ -61,7 +61,7 @@ export class Background extends Component {
             this.tempStartLocation2.y = 1360;
         }
         if(this.tempStartLocation3.y <= (0 - this.bgHeight3)){
-            this.tempStartLocation3.y = canvas.getComponent(UITransform).height;
+            this.tempStartLocation3.y = 1360;
         }
 
         this.BG1.setPosition(this.tempStartLocation1);
