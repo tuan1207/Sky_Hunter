@@ -35,9 +35,12 @@ export class Enemy extends Component {
         this.enemyMove();
     }
     spawnBultet(){
+        if(!ButtonPlayScene.instance.spawnEnabled){
+            return;
+        }
         let bullet = this.bulletPre;
         let prefabInstance = instantiate(bullet);
-        prefabInstance.parent = Plane.instance.bullet;
+        prefabInstance.parent = this.node.parent
         prefabInstance.setWorldPosition(this.node.worldPosition);
 
         let direction = this.node.position.subtract(Plane.instance.node.position).normalize();
